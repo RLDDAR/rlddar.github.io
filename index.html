@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RLDDAR | Web Developer Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 3rem; }
+        header h1 { font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem; }
+        header p { color: var(--text-muted); font-size: 1.2rem; }
+        .section-title { font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--card-bg); padding-bottom: 0.5rem; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+        @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { margin-bottom: 0.5rem; color: var(--text-main); }
+        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .tag { background: #334155; color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; }
+        .link { color: var(--accent); text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+        .link:hover { text-decoration: underline; }
+        .contacts { display: flex; gap: 1rem; justify-content: center; list-style: none; }
+        .contacts a { color: var(--text-main); text-decoration: none; background: var(--card-bg); padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid #334155; }
+        .contacts a:hover { background: #334155; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Шапка профиля -->
+    <header>
+        <h1>RLDDAR</h1>
+        <p>Frontend / Fullstack Разработчик</p>
+    </header>
+
+    <!-- Секция с проектами -->
+    <section>
+        <h2 class="section-title">Мои работы</h2>
+        <div class="grid">
+            
+            <!-- Проект 1 -->
+            <div class="card">
+                <h3>Название сайта или сервиса</h3>
+                <p>Короткое описание проекта. Что это за сайт, какую задачу он решает и для кого сделан.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+                <a href="https://ссылка-на-демо-проекта.com" class="link" target="_blank">Смотреть проект →</a>
+            </div>
+
+            <!-- Проект 2 -->
+            <div class="card">
+                <h3>Еще один крутой проект</h3>
+                <p>Описание второго проекта. Можете рассказать об интересных фичах или технологиях, которые использовали.</p>
+                <div class="tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Node.js</span>
+                </div>
+                <a href="https://ссылка-на-демо-проекта2.com" class="link" target="_blank">Смотреть проект →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section>
+        <h2 class="section-title">Связаться со мной</h2>
+        <ul class="contacts">
+<li><a href="https://t.me" target="_blank">Telegram</a></li>
+            <li><a href="mailto:ваша_почта@example.com">Email</a></li>
+            <li><a href="https://github.com" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+</div>
+
+</body>
+</html>
