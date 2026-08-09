@@ -3,174 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RLDDAR | Web Developer Portfolio</title>
+    <title>Портфолио | Web Developer</title>
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.5;
-            padding: 2rem 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            padding: 3rem 1.5rem;
+            line-height: 1.6;
         }
-        .container { max-width: 800px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 3rem; }
-        header h1 { font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem; }
-        header p { color: var(--text-muted); font-size: 1.2rem; }
-        .section-title { font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--card-bg); padding-bottom: 0.5rem; }
-        .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 3rem; }
-        @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
         .card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            transition: transform 0.2s;
-            display: flex;
-            flex-direction: column;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { margin-bottom: 0.5rem; color: var(--text-main); }
-        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; flex-grow: 1; }
-        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-        .tag { background: #334155; color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; }
-        .card-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-        .link { color: var(--accent); text-decoration: none; font-weight: bold; font-size: 0.9rem; }
-        .link:hover { text-decoration: underline; }
-        .contacts { display: flex; gap: 1rem; justify-content: center; list-style: none; flex-wrap: wrap; }
-        .contacts a { color: var(--text-main); text-decoration: none; background: var(--card-bg); padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid #334155; }
-        .contacts a:hover { background: #334155; }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(56, 189, 248, 0.1);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f8fafc;
+            letter-spacing: -0.02em;
+        }
+
+        .card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            min-height: 4.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 0.35rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .card-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .link {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .link:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+        }
+
+        .link::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+
+        .link:hover::after {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card h3 {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>RLDDAR</h1>
-        <p>Frontend / Fullstack Разработчик</p>
-    </header>
-
-    <section>
-        <h2 class="section-title">Мои работы</h2>
-        <div class="grid">
-            
-            <!-- Проект 1: Генератор паролей -->
-            <div class="card">
-                <h3>Генератор паролей</h3>
-                <p>Генератор паролей с расчётом энтропии, индикатором надёжности, историей и тёмной темой.</p>
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                </div>
-                <div class="card-links">
-                    <a href="https://rlddar.github.io/password-generator./" class="link" target="_blank">Смотреть проект →</a>
-                    <a href="https://github.com/rlddar/password-generator." class="link" target="_blank">Код на GitHub →</a>
-                </div>
+    <div class="grid">
+        
+        <!-- Проект 1: Генератор паролей -->
+        <div class="card">
+            <h3>Генератор паролей</h3>
+            <p>Генератор паролей с расчётом энтропии, индикатором надёжности, историей и тёмной темой.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
             </div>
-
-            <!-- Проект 2: Калькулятор облигаций -->
-            <div class="card">
-                <h3>Калькулятор облигаций</h3>
-                <p>Калькулятор доходности облигаций с авто-поиском по Мосбирже, расчётом YTM, учётом НДФЛ 13% и комиссии брокера. Графики структуры прибыли и таблица купонных выплат.</p>
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Chart.js</span>
-                </div>
-                <div class="card-links">
-                    <a href="https://rlddar.github.io/bond-calculator/" class="link" target="_blank">Смотреть проект →</a>
-                    <a href="https://github.com/rlddar/bond-calculator" class="link" target="_blank">Код на GitHub →</a>
-                </div>
+            <div class="card-links">
+                <a href="https://rlddar.github.io/password-generator./" class="link" target="_blank">Смотреть проект</a>
+                <a href="https://github.com/rlddar/password-generator." class="link" target="_blank">Код на GitHub</a>
             </div>
-
-            <!-- Проект 3: Демо интернет-магазин -->
-            <div class="card">
-                <h3>Демо интернет-магазин</h3>
-                <p>Интернет-магазин электроники и аудиотехники с каталогом, корзиной, живым поиском, фильтрами, таймером акций и адаптивным дизайном.</p>
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">localStorage</span>
-                    <span class="tag">IntersectionObserver</span>
-                </div>
-                <div class="card-links">
-                    <a href="https://rlddar.github.io/pleer-ru-redesign/" class="link" target="_blank">Смотреть проект →</a>
-                    <a href="https://github.com/rlddar/pleer-ru-redesign" class="link" target="_blank">Код на GitHub →</a>
-                </div>
-            </div>
-
-            <!-- Проект 4: Стоматология Смайлик -->
-            <div class="card">
-                <h3>Стоматология «Смайлик»</h3>
-                <p>Премиальный лендинг стоматологического кабинета с тёмной эстетикой, кастомным курсором, плавными анимациями появления и формой онлайн-записи с валидацией.</p>
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">SVG</span>
-                    <span class="tag">IntersectionObserver</span>
-                </div>
-                <div class="card-links">
-                    <a href="https://rlddar.github.io/smile-dental/" class="link" target="_blank">Смотреть проект →</a>
-                    <a href="https://github.com/rlddar/smile-dental" class="link" target="_blank">Код на GitHub →</a>
-                </div>
-            </div>
-
-            <!-- Проект 5: Redmi Note 14 Pro -->
-            <div class="card">
-                <h3>Redmi Note 14 Pro — промо-лендинг</h3>
-                <p>Промо-лендинг смартфона с интерактивной 3D-моделью телефона, параллаксом, анимированными счётчиками, SVG-визуализацией процессора, циклом зарядки батареи и выбором расцветок.</p>
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">SVG</span>
-                    <span class="tag">IntersectionObserver</span>
-                </div>
-                <div class="card-links">
-                    <a href="https://rlddar.github.io/redmi-note-14-pro/" class="link" target="_blank">Смотреть проект →</a>
-                    <a href="https://github.com/rlddar/redmi-note-14-pro" class="link" target="_blank">Код на GitHub →</a>
-                </div>
-            </div>
-
-            <!-- Проект 6: ШТАБ — менеджер задач -->
-            <div class="card">
-                <h3>ШТАБ — менеджер задач</h3>
-                <p>Менеджер задач с живыми таймерами обратного отсчёта, приоритетами, фильтрами, поиском, редактированием и сохранением данных в localStorage. Конфетти при завершении задач и тосты-уведомления.</p>
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">localStorage</span>
-                    <span class="tag">Intl API</span>
-                </div>
-                <div class="card-links">
-                    <a href="https://rlddar.github.io/shtab-tasks/" class="link" target="_blank">Смотреть проект →</a>
-                    <a href="https://github.com/rlddar/shtab-tasks" class="link" target="_blank">Код на GitHub →</a>
-                </div>
-            </div>
-
         </div>
-    </section>
 
-    <section>
-        <h2 class="section-title">Связаться со мной</h2>
-        <ul class="contacts">
-            <li><a href="https://t.me" target="_blank">Telegram</a></li>
-            <li><a href="mailto:ваша_почта@example.com">Email</a></li>
-            <li><a href="https://github.com" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
+        <!-- Проект 2: Калькулятор облигаций -->
+        <div class="card">
+            <h3>Калькулятор облигаций</h3>
+            <p>Калькулятор доходности облигаций с авто-поиском по Мосбирже, расчётом YTM, учётом НДФЛ 13% и комиссии брокера. Графики структуры прибыли и таблица купонных выплат.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Chart.js</span>
+            </div>
+            <div class="card-links">
+                <a href="https://rlddar.github.io/bond-calculator/" class="link" target="_blank">Смотреть проект</a>
+                <a href="https://github.com/rlddar/bond-calculator" class="link" target="_blank">Код на GitHub</a>
+            </div>
+        </div>
+
+        <!-- Проект 3: Демо интернет-магазин -->
+        <div class="card">
+            <h3>Демо интернет-магазин</h3>
+            <p>Интернет-магазин электроники и аудиотехники с каталогом, корзиной, живым поиском, фильтрами, таймером акций и адаптивным дизайном.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">localStorage</span>
+                <span class="tag">IntersectionObserver</span>
+            </div>
+            <div class="card-links">
+                <a href="https://rlddar.github.io/pleer-ru-redesign/" class="link" target="_blank">Смотреть проект</a>
+                <a href="https://github.com/rlddar/pleer-ru-redesign" class="link" target="_blank">Код на GitHub</a>
+            </div>
+        </div>
+
+        <!-- Проект 4: Стоматология Смайлик -->
+        <div class="card">
+            <h3>Стоматология «Смайлик»</h3>
+            <p>Премиальный лендинг стоматологического кабинета с тёмной эстетикой, кастомным курсором, плавными анимациями появления и формой онлайн-записи с валидацией.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">SVG</span>
+                <span class="tag">IntersectionObserver</span>
+            </div>
+            <div class="card-links">
+                <a href="https://rlddar.github.io/smile-dental/" class="link" target="_blank">Смотреть проект</a>
+                <a href="https://github.com/rlddar/smile-dental" class="link" target="_blank">Код на GitHub</a>
+            </div>
+        </div>
+
+        <!-- Проект 5: Redmi Note 14 Pro -->
+        <div class="card">
+            <h3>Redmi Note 14 Pro — промо-лендинг</h3>
+            <p>Промо-лендинг смартфона с интерактивной 3D-моделью телефона, параллаксом, анимированными счётчиками, SVG-визуализацией процессора, циклом зарядки батареи и выбором расцветок.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">SVG</span>
+                <span class="tag">IntersectionObserver</span>
+            </div>
+            <div class="card-links">
+                <a href="https://rlddar.github.io/redmi-note-14-pro/" class="link" target="_blank">Смотреть проект</a>
+                <a href="https://github.com/rlddar/redmi-note-14-pro" class="link" target="_blank">Код на GitHub</a>
+            </div>
+        </div>
+
+        <!-- Проект 6: ШТАБ — менеджер задач -->
+        <div class="card">
+            <h3>ШТАБ — менеджер задач</h3>
+            <p>Менеджер задач с живыми таймерами обратного отсчёта, приоритетами, фильтрами, поиском, редактированием и сохранением данных в localStorage. Конфетти при завершении задач и тосты-уведомления.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">localStorage</span>
+                <span class="tag">Intl API</span>
+            </div>
+            <div class="card-links">
+                <a href="https://rlddar.github.io/shtab-tasks/" class="link" target="_blank">Смотреть проект</a>
+                <a href="https://github.com/rlddar/shtab-tasks" class="link" target="_blank">Код на GitHub</a>
+            </div>
+        </div>
+
+        <!-- Проект 7: Тетрис — Neon Edition -->
+        <div class="card">
+            <h3>Тетрис — Neon Edition</h3>
+            <p>Классический тетрис с неоновой эстетикой, Canvas-рендерингом, Web Audio API для звуков и фоновой музыки, системой SRS (wall kicks), combo-системой, ghost piece, hold-фигурой и адаптивным управлением для мобильных устройств.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Canvas API</span>
+                <span class="tag">Web Audio API</span>
+                <span class="tag">localStorage</span>
+            </div>
+            <div class="card-links">
+                <a href="https://rlddar.github.io/tetris-neon/" class="link" target="_blank">Смотреть проект</a>
+                <a href="https://github.com/rlddar/tetris-neon" class="link" target="_blank">Код на GitHub</a>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 </body>
